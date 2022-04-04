@@ -1,4 +1,4 @@
-<main class="bg_gray">
+<form class="bg_gray" method="POST" action="">
 
     <div class="container margin_30">
         <div class="page_header">
@@ -9,6 +9,21 @@
             <div class="col-xl-6 col-lg-6 col-md-8">
                 <div class="box_account">
                     <h3 class="client">Login</h3>
+                    {{#if success_msg}}
+                            <div class="alert alert-success" role="alert">
+                                {{success_msg}}
+                            </div>
+                    {{/if}}
+                    {{#if error_msg}}
+                            <div class="alert alert-danger" role="alert">
+                                {{error_msg}}
+                            </div>
+                    {{/if}}
+                    {{#if error}}
+                            <div class="alert alert-danger" role="alert">
+                                {{error}}
+                            </div>
+                    {{/if}}
                     <div class="form_container">
                         <div class="row no-gutters">
                             <div class="col-lg-6 pr-lg-1">
@@ -23,7 +38,7 @@
                             <input type="email" class="form-control" name="email" id="email" placeholder="Email*">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" name="password_in" id="password_in" value=""
+                            <input type="password" class="form-control" name="password" id="password" value=""
                                 placeholder="Password*">
                         </div>
                         <div class="clearfix add_bottom_15">
@@ -65,4 +80,4 @@
         <!-- /row -->
     </div>
     <!-- /container -->
-</main>
+</form>

@@ -7,7 +7,14 @@
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-8">
                 <div class="box_account">
-                    <h3 class="new_client">Register</h3> <small class="float-right pt-2">* Required Fields</small>
+                    <h3 class="new_client">Register</h3>
+                    {{#if errors}}
+                        {{#each errors}}
+                            <div class="alert alert-warning" role="alert">
+                                {{msg}}
+                            </div>
+                        {{/each}}
+                    {{/if}}
                     <div class="form_container">
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" id="email" placeholder="Email*">
