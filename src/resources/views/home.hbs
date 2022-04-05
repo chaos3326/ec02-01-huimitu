@@ -1,5 +1,10 @@
 <main>
   <div id="carousel-home">
+    {{#if success_msg}}
+      <div class="alert alert-success" role="alert">
+          {{success_msg}}
+      </div>
+    {{/if}}
     <div class="owl-carousel owl-theme">
       <div
         class="owl-slide cover"

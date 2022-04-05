@@ -1,8 +1,7 @@
-const Product = require('../models/Product')
-const User = require('../models/User')
-const { multipleMongooseToObject } = require('../../utils/mongoose')
-const bcrypt = require('bcryptjs')
-const passport = require('passport')
+const Product = require('../models/Product');
+const User = require('../models/User');
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 
 class SiteController {

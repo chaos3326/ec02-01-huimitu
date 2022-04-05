@@ -9,7 +9,7 @@ const session = require('express-session');
 const passport = require('passport');
 
 const route = require('./routes');
-const db = require('./config/db/index');
+const db = require('./config/db/index.js');
 const req = require('express/lib/request');
 
 //passport config
