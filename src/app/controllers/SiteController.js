@@ -2,7 +2,8 @@ const Product = require('../models/Product');
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-
+const { authenticate } = require('passport/lib');
+const { isUserExit } = require('../../config/siteService');
 
 class SiteController {
   //[GET] /
@@ -32,6 +33,13 @@ class SiteController {
 
   register(req, res, next) {
     res.render("register");
+  }
+
+  
+
+  async checkEmailExist (req , res, next){
+    const User = await isUserExit(req.params.email);
+    res.json(!!User);
   }
 
   validateRegister(req, res, next) {
@@ -114,5 +122,7 @@ class SiteController {
     }
   }
 }
+
+
 
 module.exports = new SiteController();

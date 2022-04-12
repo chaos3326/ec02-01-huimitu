@@ -8,13 +8,17 @@
             <div class="col-xl-6 col-lg-6 col-md-8">
                 <div class="box_account">
                     <h3 class="new_client">Register</h3>
-                    {{#if errors}}
-                        {{#each errors}}
-                            <div class="alert alert-warning" role="alert">
-                                {{msg}}
-                            </div>
-                        {{/each}}
-                    {{/if}}
+                        <div class="error " role="alert">
+                            {{error}}
+                        </div>
+                        {{#if errors}}
+                            {{#each errors}}
+                                <div class="errors alert alert-warning" role="alert">
+                                    {{msg}}
+                                </div>
+                            {{/each}}
+                        {{/if}}
+
                     <div class="form_container">
                         <div class="form-group">
                             <input type="email" class="form-control" name="email" id="email" placeholder="Email*">
@@ -75,3 +79,25 @@
     </div>
     <!-- /container -->
 </form>
+
+{{#section 'script'}}
+    <script>
+        $('#email').on('input', function () {
+            const emailInput = $(this);
+             $( '.error' ).removeClass( "alert alert-warning" );
+            $.getJSON('/api/check-email-exist/' + this.value, function (isExist) {
+                if (isExist) {
+                    emailInput.addClass('is-invalid');
+                    $( '.error' ).addClass( "alert alert-warning" );
+                    emailInput.removeClass('is-valid');
+                    $('.error').html('Email already exist');
+                } else {
+                    emailInput.addClass('is-valid');
+                    emailInput.removeClass('is-invalid');
+                    $('.error').html('');
+                }
+            });
+        });
+    </script>
+    <script>$('.alert').alert()</script>
+{{/section}}

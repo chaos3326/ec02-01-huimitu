@@ -7,6 +7,8 @@ const port = process.env.PORT || 5000;
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
+const express_handlebars_sections = require('express-handlebars-sections');
+
 
 const route = require('./routes');
 const db = require('./config/db/index.js');
@@ -27,7 +29,11 @@ app.use(express.json());
 app.use(methodOverride('_method'))
 
 app.engine('hbs', engine({
-    extname: '.hbs'
+    defaultLayout: 'main',
+    helpers: {
+        section: express_handlebars_sections()
+    },
+    extname: '.hbs',
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));

@@ -11,7 +11,7 @@ module.exports = {
         if(req.user.isAdmin == true) {
             return next();
         }
-        req.flash('error_msg','This site can only log by an admin');
+        req.flash('error_msg','This Admin site can only log by an admin');
         res.redirect('/');
     }
 }

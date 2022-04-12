@@ -25,6 +25,7 @@ router.post("/login", SiteController.validateLogin);
 router.get("/register", SiteController.register);
 router.post("/register", SiteController.validateRegister);
 router.get("/", ensureAnthenticated.ensureAuthenticated, SiteController.index);
+router.get('/api/check-email-exist/:email',SiteController.checkEmailExist);
 
 
 
