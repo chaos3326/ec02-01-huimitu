@@ -1,4 +1,4 @@
-const { renderSync } = require('node-sass');
+
 const Product = require('../models/Product');
 const User = require('../models/User');
 
