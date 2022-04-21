@@ -43,8 +43,6 @@
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
   "devDependencies": {
-    "morgan": "^1.10.0",
-    "node-sass": "^7.0.1",
     "nodemon": "^2.0.15"
   }
 }
