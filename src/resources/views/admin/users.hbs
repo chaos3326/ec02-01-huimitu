@@ -6,7 +6,14 @@
                 <h3>Users</h3>
             </div>
         </div>
-        
+        <form class="" method="get">
+                        <div class="mt-0" name="sort" id="sort">
+                            <input class="mt-0" type="radio" name="sort" value="username"  selected="selected">Sort by name</input>
+                            <input class="mt-0" type="radio" name="sort" value="email">Sort by email</input>
+                            <input class="mt-0" type="radio" name="sort" value="createdAt">Sort by registertime</input>
+                            <button type="submit" class="btn btn-primary btn-sm" id="btnsort" >Sort</button>
+                        </div>
+        </form>
         <div class="row margin-bottom-120">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="statbox widget box box-shadow">
@@ -41,7 +48,7 @@
                                         <td>{{this.city}}</td>
                                         <td>{{this.country}}</td>
                                         <td>{{this.telephone}}</td>
-                                        <td class="text-center">{{this.createdAt}}</td>
+                                        {{!-- <td class="text-center">{{this.createdAt}}</td> --}}
                                         <td class="align-center">
                                             <ul class="table-controls">
                                                 <li>

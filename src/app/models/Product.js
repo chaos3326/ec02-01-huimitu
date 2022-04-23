@@ -10,7 +10,7 @@ const Product = new Schema({
     category: { type: String },
     status: { type: String },
     country: { type: String },
-    // image: { type: String },
+    fileImage: { type: String },
     qty: { type: Number },
     price: { type: String },
     discount:{type:Number},
@@ -20,4 +20,7 @@ const Product = new Schema({
     timestamps: true,
 });
 
+Product.index({name: 'text'})
+
 module.exports = mongoose.model('Product', Product);
+

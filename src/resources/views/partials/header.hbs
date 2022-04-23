@@ -61,8 +61,9 @@
                 </span>
                 <div id="menu">
                   <ul>
-                    <li><span><a href="/admin">Admin site</a></span>
-                      {{! <ul>
+                    <li><span><a href="/products">products</a></span> </li>
+                    {{!-- <li><span><a href="/admin">Admin site</a></span> </li> --}}
+                       {{!-- <ul>
                         <li><a href="listing-grid-1-full.html">Trending</a></li>
                         <li><a href="listing-grid-2-full.html">Life style</a></li>
                         <li><a href="listing-grid-3.html">Running</a></li>
@@ -71,12 +72,9 @@
                           >Training</a></li>
                         <li><a href="listing-grid-5-sidebar-right.html">View all
                             Collections</a></li>
-                      </ul> }}
-                    </li>
-                    <li><span><a href="/register">Register</a></span></li>
-                    <li><span><a href="/login">Login</a></span></li>
-                    <li><span><a href="/products">Products</a></span></li>
-                    {{! <li><span><a href="#">Men</a></span>
+                      </ul> --}}
+
+                    {{!-- <li><span><a href="#">Men</a></span>
                       <ul>
                         <li><a
                             href="listing-grid-6-sidebar-left.html"
@@ -134,7 +132,7 @@
                             Boys</a></li>
                         <li><a href="listing-grid-1-full.html">For Girls</a></li>
                       </ul>
-                    </li> }}
+                    </li>  --}}
                   </ul>
                 </div>
               </li>
@@ -170,20 +168,7 @@
                       </a>
                       <a href="#0" class="action"><i class="ti-trash"></i></a>
                     </li>
-                    <li>
-                      <a href="product-detail-1.html">
-                        <figure><img
-                            src="img/products/product_placeholder_square_small.jpg"
-                            data-src="img/products/shoes/thumb/2.jpg"
-                            alt=""
-                            width="50"
-                            height="50"
-                            class="lazy"
-                          /></figure>
-                        <strong><span>1x Armor Okwahn II</span>$110.00</strong>
-                      </a>
-                      <a href="0" class="action"><i class="ti-trash"></i></a>
-                    </li>
+                    
                   </ul>
                   <div class="total_drop">
                     <div class="clearfix"><strong>Total</strong><span
@@ -197,17 +182,27 @@
               </div>
               <!-- /dropdown-cart-->
             </li>
+            
             <li>
               <a href="#0" class="wishlist"><span>Wishlist</span></a>
             </li>
             <li>
               <div class="dropdown dropdown-access">
+                
                 <a href="/user" class="access_link"><span>Account</span></a>
                 <div class="dropdown-menu">
-                  <div class="text-dark text-start">Chào {{name}}</div>
-                  <a href="/login" class="btn_1">Login</a>
+
+                  {{#if users}}
+                  <div class="text-dark text-start">{{username}}</div>
+                   {{/if}} 
+                    {{#if user.isAdmin}}
+                    <a href="/admin" class="btn_1 mt-2">Admin Site</a>
+                    {{/if}}
+                  
+                  <a href="/login" class="btn_1 mt-2">Login</a>
                   <a href="/register" class="btn_1 mt-2">Register</a>
                   <a href="/logout" class="btn_1 mt-2">Logout</a>
+
                   <ul>
                     <li>
                       <a href="track-order.html"><i class="ti-truck"></i>Track
@@ -224,6 +219,8 @@
                         Faq</a>
                     </li>
                   </ul>
+ 
+
                 </div>
               </div>
               <!-- /dropdown-access-->
@@ -232,7 +229,8 @@
               <a href="javascript:void(0);" class="btn_search_mob"><span
                 >Search</span></a>
             </li>
-            <li>
+            
+            {{!-- <li>
               <a href="#menu" class="btn_cat_mob">
                 <div class="hamburger hamburger--spin" id="hamburger">
                   <div class="hamburger-box">
@@ -241,7 +239,7 @@
                 </div>
                 Categories
               </a>
-            </li>
+            </li> --}}
           </ul>
         </div>
       </div>

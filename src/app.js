@@ -18,6 +18,9 @@ const req = require('express/lib/request');
 require('./config/passport')(passport);
 
 
+//upload images
+
+
 // connect to db
 db.connect();
 
@@ -31,19 +34,27 @@ app.use(methodOverride('_method'))
 app.engine('hbs', engine({
     defaultLayout: 'main',
     helpers: {
-        section: express_handlebars_sections()
+        section: express_handlebars_sections(),
+        splitPath: function(fileImage){
+            const fsub = fileImage.substring(11);
+            const fchange = fsub.replace(" \\ "," \ ");
+            //console.log(fsub);
+            return fchange;
+        }
     },
     extname: '.hbs',
 }));
+
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 
 //Express session
 app.use(session({
-    secret: 'secret',
+    secret: 'anything',
     resave: true,
     saveUninitialized: true,
-
+    
 }))
 //passport middleware
 app.use(passport.initialize());
@@ -66,3 +77,4 @@ route(app);
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
+

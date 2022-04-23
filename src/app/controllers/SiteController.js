@@ -4,13 +4,40 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const { authenticate } = require('passport/lib');
 const { isUserExit } = require('../../config/siteService');
+const { mongooseToObject, multipleMongooseToObject } = require('../../utils/mongoose')
 
 class SiteController {
-  //[GET] /
-  index(req, res, next) {
-    res.render("home", {
-      name: req.user.username,
-    });
+  //[GET] 
+  async index(req, res, next) {
+    //console.log(req.user);
+    // Product.find({})
+    //         .then(products => {
+    //             products = products.map(product => product.toObject())
+    //             res.render('home',{
+    //                 products,
+    //                 layout:'main',
+    //             });
+    //         })
+    //         .catch(error =>{
+    //             res.status(400).send({message: error.message});
+    //         })
+            try{
+              //const name = req.user;
+              const products = await Product.find();
+              const users =  User.find({username: req.user.username});
+              console.log(req.user.username);
+              return res.render('home',{products : multipleMongooseToObject(products),users,layout:'main' });
+          }catch(err){
+              return res.status(500).json({msg: err.message})
+          }
+    // if(req.user == undefined){
+    //     res.render("home");
+    // }
+    // else{
+    // res.render("home", {
+    //   name: req.user
+    // });
+  
   }
 
   login(req, res, next) {
@@ -28,6 +55,7 @@ class SiteController {
       successRedirect: "/",
       failureRedirect: "/login",
       failureFlash: true,
+      session: true
     })(req, res, next);
   }
 
