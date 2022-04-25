@@ -130,7 +130,7 @@ class ProductsController {
     }
     var cart = new Cart(req.session.cart);
     var errMsg = req.flash('error')[0]; 
-    res.render('products/checkout', {total: cart.totalPrice, errMsg: errMsg, noError: !errMsg})
+    res.render('products/checkout', {products: cart.generateArray(), total: cart.totalPrice, errMsg: errMsg, noError: !errMsg})
   };
 
   checkOutCharge(req, res, next) {

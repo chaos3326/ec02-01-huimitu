@@ -10,7 +10,6 @@
 					<li>Page active</li>
 				</ul>
 		</div>
-		<h1>Sign In or Create an Account</h1>
 			
 	</div>
 	<!-- /page_header -->
@@ -21,7 +20,7 @@
 			<div class="row">
 				<div class="col-lg-4 col-md-6">
 					<div class="step first">
-						<h3>1. Checkout</h3>
+						<h3>1. Checkout Information</h3>
 					<ul class="nav nav-tabs" id="tab_checkout" role="tablist">
 					  <li class="nav-item">
 						<a class="nav-link active" id="home-tab" data-toggle="tab" href="#tab_1" role="tab" aria-controls="tab_1" aria-selected="true">Card details</a>
@@ -197,14 +196,16 @@
 						<h3>2. Order Summary</h3>
 					<div class="box_general summary">
 						<ul>
-							<li class="clearfix"><em>1x Armor Air X Fear</em>  <span>$145.00</span></li>
-							<li class="clearfix"><em>2x Armor Air Zoom Alpha</em> <span>$115.00</span></li>
+							{{# each products }} 
+								<li class="clearfix"><em>{{ this.qty }}x {{ this.item.name }}</em>&nbsp;&nbsp;&nbsp;<span>{{this.price}}đ</span></li>
+							{{/each}}							
+							{{!-- <li class="clearfix"><em>2x Armor Air Zoom Alpha</em> <span>$115.00</span></li> --}}
 						</ul>
 						<ul>
-							<li class="clearfix"><em><strong>Subtotal</strong></em>  <span>$450.00</span></li>
-							<li class="clearfix"><em><strong>Shipping</strong></em> <span>$0</span></li>
-							
+							{{!--<li class="clearfix"><em><strong>Subtotal</strong></em>  <span>$450.00</span></li>
+							 <li class="clearfix"><em><strong>Shipping</strong></em> <span>$0</span></li> --}}							
 						</ul>
+						<hr>
 						<div class="total clearfix"><strong>TOTAL <span>{{total}}đ</span></strong></div>
 						<button type="submit" class="btn_1 full-width">Confirm and Pay</a>
 						{{!-- <div class="form-group">
