@@ -1,13 +1,16 @@
-const Product = require('../models/Product');
-const User = require('../models/User');
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
-const { authenticate } = require('passport/lib');
-const { isUserExit } = require('../../config/siteService');
-const { mongooseToObject, multipleMongooseToObject } = require('../../utils/mongoose')
+const Product = require("../models/Product");
+const User = require("../models/User");
+const bcrypt = require("bcryptjs");
+const passport = require("passport");
+const { authenticate } = require("passport/lib");
+const { isUserExit } = require("../../config/siteService");
+const {
+  mongooseToObject,
+  multipleMongooseToObject,
+} = require("../../utils/mongoose");
 
 class SiteController {
-  //[GET] 
+  //[GET]
   async index(req, res, next) {
     //console.log(req.user);
     // Product.find({})
@@ -21,15 +24,19 @@ class SiteController {
     //         .catch(error =>{
     //             res.status(400).send({message: error.message});
     //         })
-            try{
-              //const name = req.user;
-              const products = await Product.find();
-              const users =  User.find({username: req.user.username});
-              console.log(req.user.username);
-              return res.render('home',{products : multipleMongooseToObject(products),users,layout:'main' });
-          }catch(err){
-              return res.status(500).json({msg: err.message})
-          }
+    try {
+      //const name = req.user;
+      const products = await Product.find();
+      const users = User.find({ username: req.user.username });
+      console.log(req.user.username);
+      return res.render("home", {
+        products: multipleMongooseToObject(products),
+        users,
+        layout: "main",
+      });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
     // if(req.user == undefined){
     //     res.render("home");
     // }
@@ -37,12 +44,15 @@ class SiteController {
     // res.render("home", {
     //   name: req.user
     // });
-  
+  }
+
+  loginRe(req, res, next) {
+    res.redirect("/login");
   }
 
   login(req, res, next) {
     res.render("login");
-  }
+  }  
 
   logout(req, res, next) {
     req.logout();
@@ -55,7 +65,7 @@ class SiteController {
       successRedirect: "/",
       failureRedirect: "/login",
       failureFlash: true,
-      session: true
+      session: true,
     })(req, res, next);
   }
 
@@ -63,9 +73,7 @@ class SiteController {
     res.render("register");
   }
 
-  
-
-  async checkEmailExist (req , res, next){
+  async checkEmailExist(req, res, next) {
     const User = await isUserExit(req.params.email);
     res.json(!!User);
   }
@@ -150,7 +158,5 @@ class SiteController {
     }
   }
 }
-
-
 
 module.exports = new SiteController();

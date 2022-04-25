@@ -151,35 +151,52 @@
           <ul class="top_tools">
             <li>
               <div class="dropdown dropdown-cart">
-                <a href="cart.html" class="cart_bt"><strong>2</strong></a>
+                {{#if session.cart}}
+                <a href="/products/carts" class="cart_bt"><strong>{{session.cart.totalQty}}</strong></a>
                 <div class="dropdown-menu">
                   <ul>
+                    {{# each session.cart.items }}
                     <li>
-                      <a href="product-detail-1.html">
+                      <a href="/products/details/{{this.item.slug}}">
                         <figure><img
-                            src="img/products/product_placeholder_square_small.jpg"
-                            data-src="img/products/shoes/thumb/1.jpg"
+                            src="{{ this.item.fileImage }}"
+                            data-src="{{ this.item.fileImage }}"
                             alt=""
                             width="50"
                             height="50"
                             class="lazy"
                           /></figure>
-                        <strong><span>1x Armor Air x Fear</span>$90.00</strong>
+                        <strong><span>{{this.item.name}}</span>{{this.price}}</strong>
                       </a>
-                      <a href="#0" class="action"><i class="ti-trash"></i></a>
+                      <a href="/products/remove/{{this.item._id}}" class="action"><i class="ti-trash"></i></a>
+                    </li>
+                    {{/each}}
+                    
+                  </ul>
+                  <div class="total_drop">
+                    <div class="clearfix"><strong>Total</strong><span
+                      >{{totalPrice}}</span></div>
+                    <a href="/products/carts" class="btn_1 outline">View Cart</a><a
+                      href="checkout.html"
+                      class="btn_1"
+                    >Checkout</a>
+                  </div>
+                  {{ else }}
+                <a href="/products/carts" class="cart_bt"><strong>{{session.cart.totalQty}}</strong></a>
+                <div class="dropdown-menu">
+                  <ul>
+                    <li>
+                      <strong>Cart is empty</strong>
                     </li>
                     
                   </ul>
                   <div class="total_drop">
                     <div class="clearfix"><strong>Total</strong><span
-                      >$200.00</span></div>
-                    <a href="cart.html" class="btn_1 outline">View Cart</a><a
-                      href="checkout.html"
-                      class="btn_1"
-                    >Checkout</a>
-                  </div>
+                      >0</span></div>
+                  </div>                  
                 </div>
               </div>
+              {{/if}}
               <!-- /dropdown-cart-->
             </li>
             

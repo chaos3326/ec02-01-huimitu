@@ -54,20 +54,20 @@ app.use(session({
     secret: 'anything',
     resave: true,
     saveUninitialized: true,
-    
-}))
+}));
+//connect flash
+app.use(flash());
 //passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-//connect flash
-app.use(flash());
-
 //global vars
 app.use((req, res, next)=>{
-    res.locals.success_msg = req.flash('success_msg');
-    res.locals.error_msg = req.flash('error_msg');
-    res.locals.error = req.flash('error');
+    res.locals.login = req.isAuthenticated();
+    res.locals.session = req.session;
+    // res.locals.success_msg = req.flash('success_msg');
+    // res.locals.error_msg = req.flash('error_msg');
+    // res.locals.error = req.flash('error');
     next();
 })
 
