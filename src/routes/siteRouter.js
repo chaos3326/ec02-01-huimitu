@@ -18,7 +18,7 @@ router.get(
 router.get("/login/failure", (req, res) => {
   res.send("Something went wrong..");
 });
-router.get("/logout", SiteController.logout);
+router.get("/logout", ensureAnthenticated.ensureAuthenticated, SiteController.logout);
 router.get("/", SiteController.loginRe);
 router.get("/login", SiteController.login);
 router.post("/login", SiteController.validateLogin);
