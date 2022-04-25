@@ -160,12 +160,17 @@ class ProductsController {
       });
       order.save(function(err, result) {
         // TODO: handle err
-        req.flash('success', 'Successfully bought product!');
+        //req.flash('success', 'Successfully bought product!');
         req.session.cart = null;
-        res.redirect('/products');
+        res.redirect('/products/confirmed');
+        //res.redirect('/products');
       });      
     });
   };
+
+  orderConfirmed(req, res, next) {
+    res.render('products/orderComplete');
+  }
 
 }
 

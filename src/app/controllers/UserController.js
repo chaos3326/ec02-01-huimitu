@@ -1,5 +1,7 @@
 const express = require("express");
 const User = require("../models/User");
+var Order = require("../models/Order");
+var Cart = require("../models/Cart");
 const bcrypt = require("bcryptjs");
 
 class UserController {
@@ -8,7 +10,7 @@ class UserController {
     res.redirect("user/profile");
   }
 
-  getProfile(req, res, next) {
+  getProfile(req, res, next) {    
     var _user = req.user;
     res.render("users/user", {
       email: _user.email,
@@ -17,7 +19,33 @@ class UserController {
       country: _user.country,
       telephone: _user.telephone,
     });
-  }
+  };
+
+  getOrders(req, res, next) {
+    Order.find({user: req.user}).lean()
+    .exec(function(err, orders) {
+      if(err) {
+        return res.write('Error!');
+      }
+      var cart;
+      orders.forEach(function(order) {
+        cart = new Cart(order.cart);
+        order.items = cart.generateArray();
+      });
+      res.render('users/orders', { orders: orders })
+    });
+    // Order.find({user: req.user}, function(err, orders) {
+    //   if(err) {
+    //     return res.write('Error!');
+    //   }
+    //   var cart;
+    //   orders.forEach(function(order) {
+    //     cart = new Cart(order.cart);
+    //     order.items = cart.generateArray();
+    //   });
+    //   res.render('users/orders', { orders: orders })
+    // });
+  };
 
     delete(req, res, next) {
         User.delete({ _id: req.params.id})
@@ -55,7 +83,7 @@ class UserController {
       user.country = country;
       user.telephone = telephone;
 
-      console.log(user);
+      //console.log(user);
       if (req.body.password) {
         bcrypt.genSalt(10, (err, salt) =>
           bcrypt.hash(req.body.password, salt, (err, hash) => {

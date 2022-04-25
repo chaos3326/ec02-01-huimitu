@@ -15,5 +15,6 @@ router.get('/reduce/:id', productController.cartsReduceItem);
 router.get('/remove/:id', productController.cartsRemoveItem);
 router.get('/checkout', productController.checkOut);
 router.post('/checkout', productController.checkOutCharge);
+router.get('/confirmed', productController.orderConfirmed)
 
 module.exports = router;
