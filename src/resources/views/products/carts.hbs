@@ -38,8 +38,10 @@
             <td>
               <div class="thumb_cart">
                 <img
-                  src="{{ this.item.fileImage }}"
-                  data-src="{{ this.item.fileImage }}"
+                  src="/{{ splitPath this.item.fileImage }}"
+                  {{!-- data-src="{{ splitPath this.item.fileImage }}" --}}
+                  width="50"
+                  height="50"
                   class="lazy"
                   alt="Image"
                 />
@@ -68,7 +70,7 @@
                 
             </td>
             <td>
-              <strong>{{ this.price }}</strong>
+              <strong>{{ this.price }}đ</strong>
             </td>
             <td class="options">
               <a href="/products/remove/{{this.item._id}}"><i class="ti-trash"></i></a>

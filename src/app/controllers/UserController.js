@@ -12,12 +12,16 @@ class UserController {
 
   getProfile(req, res, next) {    
     var _user = req.user;
+    var successMsg = req.flash('success_msg')[0];
+    var errorMsg = req.flash('error_msg')[0];
     res.render("users/user", {
       email: _user.email,
       username: _user.username,
       city: _user.city,
       country: _user.country,
       telephone: _user.telephone,
+      success_msg: successMsg,
+      error_msg: errorMsg,
     });
   };
 
@@ -58,7 +62,7 @@ class UserController {
       //todo: handle err
 
       if (!user) {
-        req.flash("error", "No user found");
+        req.flash("error_msg", "No user found");
         return res.redirect("/user/profile");
       }
 
@@ -70,7 +74,7 @@ class UserController {
 
       //validate
       if (!email || !username || !city || !country || !telephone) {
-        req.flash("error", "One or more fields are empty");
+        req.flash("error_msg", "One or more fields are empty");
         return res.redirect("/user/profile");
       }
 

@@ -6,7 +6,7 @@
         <div class="col-xl-3 col-lg-3 d-lg-flex align-items-center">
           <div id="logo">
             <a href="/"><img
-                src="img/logo.svg"
+                src="/img/logo.svg"
                 alt=""
                 width="100"
                 height="35"
@@ -25,7 +25,7 @@
           <div class="main-menu">
             <div id="header_menu">
               <a href="index.html"><img
-                  src="img/logo_black.svg"
+                  src="/img/logo_black.svg"
                   alt=""
                   width="100"
                   height="40"
@@ -159,8 +159,8 @@
                     <li>
                       <a href="/products/details/{{this.item.slug}}">
                         <figure><img
-                            src="{{ this.item.fileImage }}"
-                            data-src="{{ this.item.fileImage }}"
+                            src="/{{ splitPath this.item.fileImage }}"
+                            {{!-- data-src="{{ splitPath  this.item.fileImage }}" --}}
                             alt=""
                             width="50"
                             height="50"
@@ -226,12 +226,14 @@
                       <a href="track-order.html"><i class="ti-truck"></i>Track
                         your Order</a>
                     </li>
+                    {{# if login }}
                     <li>
                       <a href="/user/orders"><i class="ti-package"></i>My Orders</a>
                     </li>
                     <li>
                       <a href="/user/profile"><i class="ti-user"></i>My Profile</a>
                     </li>
+                    {{/if}}
                     <li>
                       <a href="help.html"><i class="ti-help-alt"></i>Help and
                         Faq</a>
