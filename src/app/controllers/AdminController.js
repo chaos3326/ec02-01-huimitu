@@ -83,7 +83,7 @@ class AdminController {
             //console.log(features);
             const users = result[0].status === 'fulfilled' ? result[0].value : [];
             const count = result[1].status === 'fulfilled' ? result[1].value : 0;
-            console.log(users);
+            // console.log(users);
             //return res.status(200).json({products, count})
             return res.render('admin/users',{users: multipleMongooseToObject(users),count,layout:'adminMain' });
         }catch(err){
