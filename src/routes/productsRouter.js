@@ -8,13 +8,13 @@ router.get('/details/:slug',ensureAnthenticated.ensureAuthenticated, productCont
 router.put('/:id', productController.update);
 router.delete('/:id', productController.delete);
 //router.get('/', productController.products);
-router.get('/', ensureAnthenticated.ensureAuthenticated, productController.getProducts);
-router.get('/add-to-cart/:id', productController.addToCart);
-router.get('/carts', productController.carts);
-router.get('/reduce/:id', productController.cartsReduceItem);
-router.get('/remove/:id', productController.cartsRemoveItem);
-router.get('/checkout', productController.checkOut);
-router.post('/checkout', productController.checkOutCharge);
-router.get('/confirmed', productController.orderConfirmed)
+router.get('/',  productController.getProducts);
+router.get('/add-to-cart/:id',ensureAnthenticated.ensureAuthenticated, productController.addToCart);
+router.get('/carts',ensureAnthenticated.ensureAuthenticated, productController.carts);
+router.get('/reduce/:id',ensureAnthenticated.ensureAuthenticated, productController.cartsReduceItem);
+router.get('/remove/:id',ensureAnthenticated.ensureAuthenticated, productController.cartsRemoveItem);
+router.get('/checkout',ensureAnthenticated.ensureAuthenticated, productController.checkOut);
+router.post('/checkout',ensureAnthenticated.ensureAuthenticated, productController.checkOutCharge);
+router.get('/confirmed',ensureAnthenticated.ensureAuthenticated, productController.orderConfirmed)
 
 module.exports = router;

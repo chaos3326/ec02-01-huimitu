@@ -1,25 +1,25 @@
 <main class="bg_gray">
-	    {{!-- <div class="container margin_30">
+	    <div class="container margin_30">
 	        <div class="page_header">
-	            <div class="breadcrumbs">
+	            {{!-- <div class="breadcrumbs">
 	                <ul>
 	                    <li><a href="#">Home</a></li>
 	                    <li><a href="#">Category</a></li>
 	                    <li>Page active</li>
 	                </ul>
-	            </div>
-	            <h1>Armor Air X Fear</h1>
+	            </div> --}}
+	            <h1>{{product.name}}</h1>
 	        </div>
 	        <!-- /page_header -->
 	        <div class="row justify-content-center">
 	            <div class="col-lg-8">
-	                <div class="owl-carousel owl-theme prod_pics magnific-gallery">
-	                    <div class="item">
-	                        <a href="img/products/shoes/product_detail_1.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/products/shoes/product_detail_1.jpg" alt=""></a>
-	                    </div>
+	                <div class="">
+	                    {{!-- <div class="item">
+	                        <a href="" title="Photo title" data-effect="mfp-zoom-in"><img src="/upload/1650723162355-sach-giao-khoa-tieng-viet-lop-1.jpg" alt=""></a>
+	                    </div> --}}
 	                    <!-- /item -->
 	                    <div class="item">
-	                        <a href="img/products/shoes/product_detail_2.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="img/products/product_placeholder_detail_2.jpg" data-src="img/products/shoes/product_detail_2.jpg" alt="" class="owl-lazy"></a>
+	                        <a href="img/products/shoes/product_detail_2.jpg" title="Photo title" data-effect="mfp-zoom-in"><img src="/{{splitPath2 product.fileImage}}" data-src="/{{splitPath2 product.fileImage}}" alt="" class="owl-lazy"></a>
 	                    </div>
 	                    <!-- /item -->
 	                </div>
@@ -27,7 +27,7 @@
 	            </div>
 	        </div>
 	        <!-- /row -->
-	    </div> --}}
+	    </div> 
 	    <!-- /container -->
 	    
 	    <div class="bg_white">
@@ -87,7 +87,7 @@
 	    
 	    <!-- /tab_content_wrapper -->
 
-	    <div class="bg_white">
+	    {{!-- <div class="bg_white">
 	        <div class="container margin_60_35">
 	            <div class="main_title">
 	                <h2>Related</h2>
@@ -221,7 +221,7 @@
 	            <!-- /products_carousel -->
 	        </div>
 	        <!-- /container -->
-	    </div>
+	    </div> --}}
 	    <!-- /bg_white -->
 
 	</main>

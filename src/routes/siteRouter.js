@@ -19,14 +19,14 @@ router.get("/login/failure", (req, res) => {
   res.send("Something went wrong..");
 });
 router.get("/logout", ensureAnthenticated.ensureAuthenticated, SiteController.logout);
-router.get("/", SiteController.loginRe);
+//router.get("/", SiteController.loginRe);
 router.get("/login", SiteController.login);
 router.post("/login", SiteController.validateLogin);
 router.get("/register", SiteController.register);
 router.post("/register", SiteController.validateRegister);
 router.get(
-  "/home",
-  ensureAnthenticated.ensureAuthenticated,
+  "/",
+  //ensureAnthenticated.ensureAuthenticated,
   SiteController.index
 );
 router.get("/api/check-email-exist/:email", SiteController.checkEmailExist);

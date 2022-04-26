@@ -12,6 +12,7 @@ const {
 class SiteController {
   //[GET]
   async index(req, res, next) {
+    const products = await Product.find();
     //console.log(req.user);
     // Product.find({})
     //         .then(products => {
@@ -28,14 +29,14 @@ class SiteController {
       //const name = req.user;
       const products = await Product.find();
       const users = User.find({ username: req.user.username });
-      console.log(req.user.username);
+      //console.log(req.user.username);
       return res.render("home", {
         products: multipleMongooseToObject(products),
         users,
         layout: "main",
       });
     } catch (err) {
-      return res.status(500).json({ msg: err.message });
+      return res.render("home",{products: multipleMongooseToObject(products),layout: "main"});
     }
     // if(req.user == undefined){
     //     res.render("home");

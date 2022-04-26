@@ -40,6 +40,12 @@ app.engine('hbs', engine({
             const fchange = fsub.replace(" \\ "," \ ");
             //console.log(fsub);
             return fchange;
+        },
+        splitPath2: function(fileImage){
+            const fsub = fileImage.substring(11);
+            const fchange = fsub.replace(" \\ "," / ");
+            //console.log(fsub);
+            return fchange;
         }
     },
     extname: '.hbs',

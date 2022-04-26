@@ -4,7 +4,7 @@ module.exports = {
             return next();
         }
         req.flash('error_msg','Please log in to view this resource');
-        res.redirect('/');
+        res.redirect('/login');
     },
 
     isAdmin: function(req, res, next) {

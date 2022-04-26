@@ -104,7 +104,7 @@
   </div>
   <!--/carousel-->
 
-  <ul id="banners_grid" class="clearfix">
+  {{!-- <ul id="banners_grid" class="clearfix">
     <li>
       <a href="#0" class="img_container">
         <img
@@ -156,14 +156,14 @@
         </div>
       </a>
     </li>
-  </ul>
+  </ul> --}}
   <!--/banners_grid -->
 
   <div class="container margin_60_35">
     <div class="main_title">
-      <h2>Top Selling</h2>
+      <h2>Product Selling</h2>
       <span>Products</span>
-      <p>Cum doctus civibus efficiantur in imperdiet deterruisset</p>
+      <p>Everything!!!</p>
     </div>
     <div class="row small-gutters">
        {{#each products}}
@@ -172,7 +172,7 @@
         <div class="grid_item">
           <figure>
             <span class="ribbon off">-30%</span>
-            <a href="product-detail-1.html">
+            <a href="/products/details/{{slug}}">
               <img
                 class="img-fluid lazy"
                 src="{{splitPath fileImage}}"
@@ -195,26 +195,12 @@
             <h3>{{name}}</h3>
           </a>
           <div class="price_box">
-            <span class="new_price">$48.00</span>
-            <span class="old_price">$60.00</span>
+            <span class="new_price">{{price}}</span>
+            {{!-- <span class="old_price">$60.00</span> --}}
           </div>
           <ul>
             <li><a
-                href="#0"
-                class="tooltip-1"
-                data-toggle="tooltip"
-                data-placement="left"
-                title="Add to favorites"
-              ><i class="ti-heart"></i><span>Add to favorites</span></a></li>
-            <li><a
-                href="#0"
-                class="tooltip-1"
-                data-toggle="tooltip"
-                data-placement="left"
-                title="Add to compare"
-              ><i class="ti-control-shuffle"></i><span>Add to compare</span></a></li>
-            <li><a
-                href="#0"
+                href="/products/add-to-cart/{{this._id}}"
                 class="tooltip-1"
                 data-toggle="tooltip"
                 data-placement="left"
@@ -635,12 +621,12 @@
   </div>
   <!-- /container -->
 
-  <div class="featured lazy" data-bg="url(img/featured_home.jpg)">
+  <div class="featured lazy" data-bg="url(img/products/pngtree-real-estate-selling-a-house-estate-high-end-real-estate-image_21290.jpg)">
     <div
       class="opacity-mask d-flex align-items-center"
       data-opacity-mask="rgba(0, 0, 0, 0.5)"
     >
-      <div class="container margin_60">
+      {{!-- <div class="container margin_60">
         <div class="row justify-content-center justify-content-md-start">
           <div class="col-lg-6 wow" data-wow-offset="150">
             <h3>Armor<br />Air Color 720</h3>
@@ -658,12 +644,12 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
   <!-- /featured -->
 
-  <div class="container margin_60_35">
+  {{!-- <div class="container margin_60_35">
     <div class="main_title">
       <h2>Featured</h2>
       <span>Products</span>
@@ -929,7 +915,7 @@
       <!-- /item -->
     </div>
     <!-- /products_carousel -->
-  </div>
+  </div> --}}
   <!-- /container -->
 
   <div class="bg_gray">
@@ -988,7 +974,7 @@
   </div>
   <!-- /bg_gray -->
 
-  <div class="container margin_60_35">
+  {{!-- <div class="container margin_60_35">
     <div class="main_title">
       <h2>Latest News</h2>
       <span>Blog</span>
@@ -1089,6 +1075,6 @@
       <!-- /box_news -->
     </div>
     <!-- /row -->
-  </div>
+  </div> --}}
   <!-- /container -->
 </main>
